@@ -2,6 +2,7 @@ package nofrills.events;
 
 import com.mojang.renderpearl.api.pipeline.DepthStencilState;
 import com.mojang.renderpearl.api.pipeline.RenderPipeline;
+import com.mojang.renderpearl.api.pipeline.ColorTargetState;
 import com.mojang.renderpearl.api.pipeline.CompareOp;
 import com.mojang.blaze3d.vertex.ByteBufferBuilder;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -35,6 +36,7 @@ public class WorldRenderEvent {
     );
     private static final RenderPipeline LINES_TRANSLUCENT_NO_CULL_PIPELINE = RenderPipelines.register(
             RenderPipeline.builder(RenderPipelines.LINES_SNIPPET)
+                    .withColorTargetState(ColorTargetState.DEFAULT)
                     .withDepthStencilState(new DepthStencilState(CompareOp.NOT_EQUAL, false))
                     .withLocation("pipeline/nofrills_lines_translucent_no_cull")
                     .build()
